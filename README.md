@@ -86,7 +86,7 @@ A second parameter to the `ChordySvg()` constructor may be used to set more cust
 
 ## Testing
 
-Standalone testing
+Standalone testing (requires `mocha`, you may need to run `npm install mocha -g` first)
 
     git clone https://github.com/andygock/chordy-svg
     cd chordy-svg
