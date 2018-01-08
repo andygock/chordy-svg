@@ -17,6 +17,12 @@ A `<defs>` element is written which contains the notes of the chord. This in tur
 
 The [GitHub page](https://github.com/andygock/chordy-svg) may contain more up to date code than the NPM release. Please check GitHub for the most recent updates.
 
+It uses:
+
+- [SVG.js](http://svgjs.com/) for SVG manipulation.
+- [svgdom](https://github.com/svgdotjs/svgdom) to allow SVG.js to run server-side.
+- [tonal](https://github.com/danigb/tonal) music theory library for determining the notes and intervals of defined chords.
+
 ## Demo
 
 You can see this library being used at <https://chords.gock.net/>
@@ -86,7 +92,7 @@ A second parameter to the `ChordySvg()` constructor may be used to set more cust
 
 ## Testing
 
-Standalone testing (requires `mocha`, you may need to run `npm install mocha -g` first)
+Standalone testing (requires [Mocha](https://mochajs.org/), you may need to run `npm install mocha -g` first)
 
     git clone https://github.com/andygock/chordy-svg
     cd chordy-svg
