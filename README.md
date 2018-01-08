@@ -82,13 +82,20 @@ The properties for this object are:
   - `[0-9a-f]`: hexadecimal value refers to fret position. e.g `b` refers to fret position `11`. Only up to fret position `15` (hex `f`) is permitted.
 - `root` is the root string. `0` refers to the lowest frequency / thickest string. On 6 string guitars with EADGBE tuning, `5` refers to the high E string. In the generated diagram, the dot for this position will be coloured red by default.
 
-A second parameter to the `ChordySvg()` may be used to set more custom parameters (documentation not complete yet).
+A second parameter to the `ChordySvg()` constructor may be used to set more custom parameters (documentation not complete yet).
 
-## Mocha testing
+## Testing
 
-Run `npm test` or `mocha`
+Standalone testing
+
+    git clone https://github.com/andygock/chordy-svg
+    cd chordy-svg
+    npm update
+    npm test
 
 This will also generate some SVG files which you should check. Remove these files once you've finished with them.
+
+    rm -f *.svg
 
 ## Notes
 
