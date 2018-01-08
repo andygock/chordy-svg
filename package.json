@@ -1,0 +1,26 @@
+{
+  "name": "chordy-svg",
+  "version": "1.0.0",
+  "description": "Guitar Chord SVG Diagram Generator",
+  "main": "index.js",
+  "repository": "github:andygock/chordy-svg",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "guitar",
+    "chord",
+    "chords",
+    "svg",
+    "generator",
+    "music"
+  ],
+  "author": "Andy Gock <andy@agock.com> (https://agock.com)",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.6.9",
+    "svg.js": "^2.6.3",
+    "svgdom": "0.0.15",
+    "tonal": "^1.1.0"
+  }
+}
