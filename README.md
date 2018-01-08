@@ -1,6 +1,6 @@
 # chordy-svg
 
-Node JS module for generating guitar chord diagram in SVG format.
+Node JS module for generating guitar chord diagrams in SVG format. Interval names are shown inside the dotted positions.
 
 ![Example 1](http://andygock.github.io/chordy-svg/Cmaj7-2-x35453.svg) ![Example 2](http://andygock.github.io/chordy-svg/C13-1-8x89aa.svg)
 
