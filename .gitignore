@@ -2,3 +2,4 @@
 node_modules
 fonts
 package-lock.json
+/*.svg
