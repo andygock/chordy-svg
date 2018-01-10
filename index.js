@@ -1,10 +1,20 @@
-const path = require('path');
-const Tonal = require('tonal');
-const debug = require('debug')('app:chordy-svg');
-const window = require('svgdom');
-const SVG = require('svg.js')(window);
+'use strict';
 
-const document = window.document;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  var window = require('svgdom');
+  var document = window.document;
+
+  var Tonal = require('tonal');
+  var debug = require('debug')('app:chordy-svg');
+  var SVG = require('svg.js')(window);
+} else {
+  if (typeof window.Tonal === 'undefined') {
+    throw new Error('Tonal not loaded');
+  }
+  if (typeof window.SVG === 'undefined') {
+    throw new Error('SVG.js not loaded');
+  }
+}
 
 class chordySvg {
 
@@ -28,15 +38,14 @@ class chordySvg {
       offset: { x: 50, y: 50 },
       colorRootBackground: '#c00',
       fontDir: '',
-      fontFamilyMappings: {}
+      fontFamilyMappings: {},
+      target: {}
     };
 
     Object.assign(this.config, options);
 
     // set up fonts
     // ref: https://github.com/svgdotjs/svgdom
-    // window.setFontDir(path.join(__dirname, 'fonts'));
-    // window.setFontFamilyMappings({ Arial: 'arial.ttf' });
     if (this.config.fontDir !== '' && !this.isEmpty(this.config.fontFamilyMappings)) {
       window.setFontDir(this.config.fontDir);
       window.setFontFamilyMappings(this.config.fontFamilyMappings);
@@ -79,7 +88,13 @@ class chordySvg {
 
     // SVG drawing starts here
     // const svgChord = SVG(element).size(svgConfig.width, svgConfig.height);
-    this.svgChord = SVG(document.documentElement).size(this.svgConfig.width, this.svgConfig.height);
+    if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+      // ran in NodeJS
+      this.svgChord = SVG(document.documentElement).size(this.svgConfig.width, this.svgConfig.height);
+    } else {
+      // ran in browser
+      this.svgChord = SVG(this.config.target).size(this.svgConfig.width, this.svgConfig.height);
+    }
     this.svgChord.clear();
     this.svgChord.defs().element('style').words(styleData);
 
@@ -372,4 +387,7 @@ class chordySvg {
   }
 }
 
-module.exports = chordySvg;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
+  module.exports = chordySvg;
+else
+  window.ChordySvg = chordySvg;

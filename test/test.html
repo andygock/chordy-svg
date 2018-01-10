@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>chordy-svg test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+</head>
+<body>
+    <div id="image"></div>
+
+    <!-- use https://rawgit.com/danigb/tonal/master/dist/tonal.min.js for latest build -->
+    <script src="https://cdn.rawgit.com/danigb/tonal/a105f292/dist/tonal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
+    <script src="../dist/chordy-svg.js"></script>
+    <script type="text/javascript">
+        // create new svg diagram
+        var element = document.getElementById('image');
+        var svg = new ChordySvg({ name: "Cmaj7", shape: "x35453", root: 2, comment: "Test comment" }, { target: element });
+    </script>
+</body>
+</html>

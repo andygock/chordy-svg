@@ -5,7 +5,8 @@
   "main": "index.js",
   "repository": "github:andygock/chordy-svg",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "./node_modules/.bin/babel ./index.js --out-file dist/chordy-svg.js"
   },
   "keywords": [
     "guitar",
@@ -23,5 +24,9 @@
     "svgdom": "0.0.15",
     "tonal": "^1.1.2",
     "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }
