@@ -68,6 +68,24 @@ Create SVG and write to new file `output.svg`
 
     node test.js > output.svg
 
+### Browser Example
+
+`chordy-svg.min.js` is found in `dist/` and can be built with `npm build`. Read the tests section further below with prewritten examples you can use.
+
+```html
+    <div id="image"></div>
+
+    <!-- use https://rawgit.com/danigb/tonal/master/dist/tonal.min.js for latest build -->
+    <script src="https://cdn.rawgit.com/danigb/tonal/a105f292/dist/tonal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
+    <script src="chordy-svg.min.js"></script>
+    <script type="text/javascript">
+        // create new svg diagram
+        var element = document.getElementById('image');
+        var svg = new ChordySvg({ name: "Cmaj7", shape: "x35453", root: 2, comment: "Test comment" }, { target: element });
+    </script>
+```
+
 ## Input
 
 In the example above, we used:
@@ -91,24 +109,6 @@ The properties for this object are:
 - `root` is the root string. `0` refers to the lowest frequency / thickest string. On 6 string guitars with EADGBE tuning, `5` refers to the high E string. In the generated diagram, the dot for this position will be coloured red by default.
 
 A second parameter to the `ChordySvg()` constructor may be used to set more custom parameters (documentation not complete yet).
-
-### Browser Example
-
-`chordy-svg.min.js` is found in `dist/` and can be built with `npm build`. Read the tests section further below with prewritten examples you can use.
-
-```html
-    <div id="image"></div>
-
-    <!-- use https://rawgit.com/danigb/tonal/master/dist/tonal.min.js for latest build -->
-    <script src="https://cdn.rawgit.com/danigb/tonal/a105f292/dist/tonal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
-    <script src="chordy-svg.min.js"></script>
-    <script type="text/javascript">
-        // create new svg diagram
-        var element = document.getElementById('image');
-        var svg = new ChordySvg({ name: "Cmaj7", shape: "x35453", root: 2, comment: "Test comment" }, { target: element });
-    </script>
-```
 
 ## Testing
 
