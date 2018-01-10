@@ -6,7 +6,9 @@
   "repository": "github:andygock/chordy-svg",
   "scripts": {
     "test": "mocha",
-    "build": "./node_modules/.bin/babel ./index.js --out-file dist/chordy-svg.js"
+    "build": "npm run babel && npm run minify",
+    "babel": "./node_modules/.bin/babel ./index.js --out-file dist/chordy-svg.js",
+    "minify": "./node_modules/.bin/minify ./dist/chordy-svg.js --out-file dist/chordy-svg.min.js"
   },
   "keywords": [
     "guitar",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-minify": "^0.2.0",
     "babel-preset-env": "^1.6.1"
   }
 }

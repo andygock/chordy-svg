@@ -41,7 +41,9 @@ Clone Git repository
 
     git clone https://github.com/andygock/chordy-svg
 
-## Simple example
+## Examples
+
+### Node Example
 
 Create a node application `test.js`. This will create a SVG diagram and write the contents to stdout.
 
@@ -90,7 +92,27 @@ The properties for this object are:
 
 A second parameter to the `ChordySvg()` constructor may be used to set more custom parameters (documentation not complete yet).
 
+### Browser Example
+
+`chordy-svg.min.js` is found in `dist/` and can be built with `npm build`. Read the tests section further below with prewritten examples you can use.
+
+```html
+    <div id="image"></div>
+
+    <!-- use https://rawgit.com/danigb/tonal/master/dist/tonal.min.js for latest build -->
+    <script src="https://cdn.rawgit.com/danigb/tonal/a105f292/dist/tonal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
+    <script src="chordy-svg.min.js"></script>
+    <script type="text/javascript">
+        // create new svg diagram
+        var element = document.getElementById('image');
+        var svg = new ChordySvg({ name: "Cmaj7", shape: "x35453", root: 2, comment: "Test comment" }, { target: element });
+    </script>
+```
+
 ## Testing
+
+### NodeJS
 
 Standalone testing (requires [Mocha](https://mochajs.org/), you may need to run `npm install mocha -g` first)
 
@@ -102,6 +124,14 @@ Standalone testing (requires [Mocha](https://mochajs.org/), you may need to run 
 This will also generate some SVG files which you should check. Remove these files once you've finished with them.
 
     rm -f *.svg
+
+### Browser
+
+Build browser targeted files `dist/svg-chordy.js` and `dist/svsg-chordy.min.js` with:
+
+    npm build
+
+View file `test/test.html`
 
 ## Notes
 
