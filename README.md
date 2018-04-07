@@ -127,7 +127,7 @@ This will also generate some SVG files which you should check. Remove these file
 
 ### Browser
 
-Build browser targeted files `dist/svg-chordy.js` and `dist/svsg-chordy.min.js` with:
+Build browser targeted files `dist/svg-chordy.js` and `dist/svg-chordy.min.js` with:
 
     npm build
 
