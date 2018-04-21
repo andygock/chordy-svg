@@ -95,6 +95,17 @@ describe('Write SVGs to files (user to review and check files afterwards)', func
       shape: "8x8aaa",
       root: 1,
       comment: "No 5th"
+    },
+    {
+      name: "Fm_C",
+      shape: "x3656x",
+      root: 5,
+      comment: ""
+    },
+    {
+      name: "Daad9",
+      shape: "xx0770",
+      root: 3
     }
   ];
 
