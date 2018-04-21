@@ -14,7 +14,7 @@ describe('Generate SVG', function () {
   const data = svg.svg();
   const doc = new DOMParser().parseFromString(data);
 
-  describe('with valid CMaj7 chord definition', function() {
+  describe('with valid CMaj7 chord definition', function () {
 
     it('<svg> ok', function () {
       if (doc.documentElement.getElementsByTagName('svg').length !== 1) {
@@ -27,7 +27,7 @@ describe('Generate SVG', function () {
       if (!notes) {
         throw new Error('Missing <notes>');
       }
-      if (notes.textContent != "C3:G3:B3:E4:G4") {
+      if (notes.textContent !== "C3:G3:B3:E4:G4") {
         throw new Error("Notes are incorrect");
       }
     });
@@ -37,7 +37,7 @@ describe('Generate SVG', function () {
       if (!semitones) {
         throw new Error('Missing <semitones>');
       }
-      if (semitones.textContent != "8:15:19:24:27") {
+      if (semitones.textContent !== "8:15:19:24:27") {
         throw new Error("Semitones are incorrect");
       }
     });
@@ -47,7 +47,7 @@ describe('Generate SVG', function () {
       if (!comment) {
         throw new Error('Missing <comment>');
       }
-      if (comment.textContent != "Test comment") {
+      if (comment.textContent !== "Test comment") {
         throw new Error("comment are incorrect");
       }
     });
@@ -118,7 +118,7 @@ describe('Write SVGs to files (user to review and check files afterwards)', func
     });
   }
 
-  after(function() {
+  after(function () {
     // console.log("You'll need to clean up the *.svg files after checking them.");
   });
 });
@@ -134,7 +134,7 @@ function saveToFile(voicing, filename, done) {
       throw new Error(err);
     }
     done();
-  })
+  });
 }
 
 function expectError(voicing) {

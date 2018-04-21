@@ -1,12 +1,12 @@
-'use strict';
+/* global Tonal, debug, SVG */
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  var window = require('svgdom');
-  var document = window.document;
+  const window = require('svgdom');
+  const document = window.document;
 
-  var Tonal = require('tonal');
-  var debug = require('debug')('app:chordy-svg');
-  var SVG = require('svg.js')(window);
+  const Tonal = require('tonal');
+  const debug = require('debug')('app:chordy-svg');
+  const SVG = require('svg.js')(window);
 } else {
   if (typeof window.Tonal === 'undefined') {
     throw new Error('Tonal not loaded');
@@ -376,10 +376,10 @@ class chordySvg {
 
       // add fret number text
       groupDots.text(fretNumberStart + " fr")
-      .attr("id", "fret-number")
-      .fill({ color: '#f00' })
-      .font({ anchor: 'left', size: this.config.fontSizeFretNumber })
-      .move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, 1); // 1 = 1st fet position in diagram
+        .attr("id", "fret-number")
+        .fill({ color: '#f00' })
+        .font({ anchor: 'left', size: this.config.fontSizeFretNumber })
+        .move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, 1); // 1 = 1st fet position in diagram
     }
 
   } // chord
@@ -403,7 +403,8 @@ class chordySvg {
   }
 }
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = chordySvg;
-else
+} else {
   window.ChordySvg = chordySvg;
+}
