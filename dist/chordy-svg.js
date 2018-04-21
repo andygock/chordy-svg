@@ -185,7 +185,7 @@ var chordySvg = function () {
 
           var semitone = this.config.stringIntervals[i];
           this.chord.semitones.push(semitone);
-          this.chord.notes.push(noteLowest + semitone);
+          this.chord.notes.push(Tonal.Note.fromMidi(noteLowest + semitone));
           shape[i] = fret;
         } else {
           // other numeric position not zero or open
@@ -326,13 +326,16 @@ var chordySvg = function () {
             // write the interval name inside the dot
             var textInterval = groupDot.text(intervalName).addClass('interval').attr("id", "circle-" + stringNumber + "-" + fretNumber + "-interval").fill({ color: '#fff' }).font({ anchor: 'middle', size: this.config.fontSizeDot }).move(_x, y).hide();
 
+            // note: fretNumber 0 = 1st fret
+            // console.log(this.chord);
             if (this.chord.root - 1 === stringNumber) {
               // root dot
+              // this part is never run if the root is a open string
 
               // set colour
               groupDot.select('circle').addClass("dot-root").fill({ color: this.config.colorRootBackground });
 
-              // draw fret number - draw only once at root position
+              // draw fret number - draw only once at root position if root is not open string
               groupDots.text(actualFretNumber + " fr").attr("id", "fret-number").fill({ color: '#f00' }).font({ anchor: 'left', size: this.config.fontSizeFretNumber }).move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, y);
             }
 
@@ -351,9 +354,18 @@ var chordySvg = function () {
 
             groupDots.add(groupDot);
           }
-        }
+        } // fret
+      } // string
+
+      // if chord has root on a open string, write fret number on diagram
+      // this wasn't done earlier for this special case
+      if (this.chord.stringsOpen.indexOf(this.chord.root - 1) !== -1) {
+        // console.log('open string root');
+
+        // add fret number text
+        groupDots.text(fretNumberStart + " fr").attr("id", "fret-number").fill({ color: '#f00' }).font({ anchor: 'left', size: this.config.fontSizeFretNumber }).move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, 1); // 1 = 1st fet position in diagram
       }
-    }
+    } // chord
 
     // draw title above diagram
 
