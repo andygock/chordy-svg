@@ -413,7 +413,7 @@ class chordySvg {
           anchor: 'left',
           size: this.config.fontSizeFretNumber
         })
-        .move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, 1); // 1 = 1st fet position in diagram
+        .move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, 1); // 1 = 1st fret position in diagram
     }
 
   } // chord
