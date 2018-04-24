@@ -1,10 +1,10 @@
 /* eslint prefer-arrow-callback:0, func-names:0, no-console:0 */
 
-const ChordySvg = require('../index');
-const fs = require('fs');
-const DOMParser = require('xmldom').DOMParser;
+const ChordySvg = require("../index");
+const fs = require("fs");
+const DOMParser = require("xmldom").DOMParser;
 
-describe('Generate SVG', function () {
+describe("Generate SVG", function() {
   const svg = new ChordySvg({
     name: "Cmaj7",
     shape: "x35453",
@@ -14,38 +14,37 @@ describe('Generate SVG', function () {
   const data = svg.svg();
   const doc = new DOMParser().parseFromString(data);
 
-  describe('with valid CMaj7 chord definition', function () {
-
-    it('<svg> ok', function () {
-      if (doc.documentElement.getElementsByTagName('svg').length !== 1) {
+  describe("with valid CMaj7 chord definition", function() {
+    it("<svg> ok", function() {
+      if (doc.documentElement.getElementsByTagName("svg").length !== 1) {
         throw new Error("Missing <svg> tag");
       }
     });
 
-    it('<notes> is C3:G3:B3:E4:G4', function () {
-      const notes = doc.documentElement.getElementsByTagName('notes')[0];
+    it("<notes> is C3:G3:B3:E4:G4", function() {
+      const notes = doc.documentElement.getElementsByTagName("notes")[0];
       if (!notes) {
-        throw new Error('Missing <notes>');
+        throw new Error("Missing <notes>");
       }
       if (notes.textContent !== "C3:G3:B3:E4:G4") {
         throw new Error("Notes are incorrect");
       }
     });
 
-    it('<semitones> is 8:15:19:24:27', function () {
-      const semitones = doc.documentElement.getElementsByTagName('semitones')[0];
+    it("<semitones> is 8:15:19:24:27", function() {
+      const semitones = doc.documentElement.getElementsByTagName("semitones")[0];
       if (!semitones) {
-        throw new Error('Missing <semitones>');
+        throw new Error("Missing <semitones>");
       }
       if (semitones.textContent !== "8:15:19:24:27") {
         throw new Error("Semitones are incorrect");
       }
     });
 
-    it('<comment> is "Test Comment"', function () {
-      const comment = doc.documentElement.getElementsByTagName('comment')[0];
+    it('<comment> is "Test Comment"', function() {
+      const comment = doc.documentElement.getElementsByTagName("comment")[0];
       if (!comment) {
-        throw new Error('Missing <comment>');
+        throw new Error("Missing <comment>");
       }
       if (comment.textContent !== "Test comment") {
         throw new Error("comment are incorrect");
@@ -53,7 +52,7 @@ describe('Generate SVG', function () {
     });
   });
 
-  it('fails with invalid char in chord shape', function () {
+  it("fails with invalid char in chord shape", function() {
     expectError({
       name: "Cmaj7",
       shape: "x3z453",
@@ -62,7 +61,7 @@ describe('Generate SVG', function () {
     });
   });
 
-  it('fails with invalid root position', function () {
+  it("fails with invalid root position", function() {
     expectError({
       name: "Cmaj7",
       shape: "x35453",
@@ -71,7 +70,7 @@ describe('Generate SVG', function () {
     });
   });
 
-  it('fails with root on muted string', function () {
+  it("fails with root on muted string", function() {
     expectError({
       name: "Cmaj7",
       shape: "x35453",
@@ -79,10 +78,9 @@ describe('Generate SVG', function () {
       comment: ""
     });
   });
-
 });
 
-describe('Write SVGs to files (user to review and check files afterwards)', function () {
+describe("Write SVGs to files (user to review and check files afterwards)", function() {
   const chords = [
     {
       name: "Cmaj7",
@@ -112,13 +110,13 @@ describe('Write SVGs to files (user to review and check files afterwards)', func
   for (let i = 0; i < chords.length; i++) {
     const chord = chords[i];
     const filename = `${chord.name}-${chord.root}-${chord.shape}.svg`;
-    it(`write to file: ${filename}`, function (done) {
+    it(`write to file: ${filename}`, function(done) {
       // write to file
       saveToFile(chord, filename, done);
     });
   }
 
-  after(function () {
+  after(function() {
     // console.log("You'll need to clean up the *.svg files after checking them.");
   });
 });
@@ -126,10 +124,10 @@ describe('Write SVGs to files (user to review and check files afterwards)', func
 function saveToFile(voicing, filename, done) {
   const svg = new ChordySvg(voicing);
   const data = svg.svg();
-  if (!data.startsWith('<svg xmlns=')) {
-    throw new Error('Invalid SVG data');
+  if (!data.startsWith("<svg xmlns=")) {
+    throw new Error("Invalid SVG data");
   }
-  fs.writeFile(filename, data, function (err) {
+  fs.writeFile(filename, data, function(err) {
     if (err) {
       throw new Error(err);
     }
@@ -146,5 +144,5 @@ function expectError(voicing) {
     // console.log('Error: ' + err.message);
     return;
   }
-  throw new Error('Error not thrown');
+  throw new Error("Error not thrown");
 }
