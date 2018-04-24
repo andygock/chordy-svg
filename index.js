@@ -1,12 +1,20 @@
 /* global Tonal, debug, SVG */
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  const window = require('svgdom');
+
+  // only require() these modules if it run from nodejs and not from a browser
+  const window = require("svgdom");
+  const Tonal = require("tonal");
+  const debug = require("debug")("app:chordy-svg");
+  const SVG = require("svg.js")(window);
   const document = window.document;
 
-  const Tonal = require('tonal');
-  const debug = require('debug')('app:chordy-svg');
-  const SVG = require('svg.js')(window);
+  // these vars need to be global
+  global.Tonal = Tonal;
+  global.debug = debug;
+  global.SVG = SVG;
+  global.document = document;
+
 } else {
   if (typeof window.Tonal === 'undefined') {
     throw new Error('Tonal not loaded');
