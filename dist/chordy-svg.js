@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -8,19 +8,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /* global Tonal, debug, SVG */
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-  var _window = require('svgdom');
+if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
+  // only require() these modules if it run from nodejs and not from a browser
+  var _window = require("svgdom");
+  var _Tonal = require("tonal");
+  var debug = require("debug")("app:chordy-svg");
+  var _SVG = require("svg.js")(_window);
   var _document = _window.document;
 
-  var _Tonal = require('tonal');
-  var debug = require('debug')('app:chordy-svg');
-  var _SVG = require('svg.js')(_window);
+  // these vars need to be global
+  global.Tonal = _Tonal;
+  global.debug = debug;
+  global.SVG = _SVG;
+  global.document = _document;
 } else {
-  if (typeof window.Tonal === 'undefined') {
-    throw new Error('Tonal not loaded');
+  if (typeof window.Tonal === "undefined") {
+    throw new Error("Tonal not loaded");
   }
-  if (typeof window.SVG === 'undefined') {
-    throw new Error('SVG.js not loaded');
+  if (typeof window.SVG === "undefined") {
+    throw new Error("SVG.js not loaded");
   }
 }
 
@@ -47,8 +53,8 @@ var chordySvg = function () {
         x: 50,
         y: 50
       },
-      colorRootBackground: '#c00',
-      fontDir: '',
+      colorRootBackground: "#c00",
+      fontDir: "",
       fontFamilyMappings: {},
       target: {}
     };
@@ -57,7 +63,7 @@ var chordySvg = function () {
 
     // set up fonts
     // ref: https://github.com/svgdotjs/svgdom
-    if (this.config.fontDir !== '' && !this.isEmpty(this.config.fontFamilyMappings)) {
+    if (this.config.fontDir !== "" && !this.isEmpty(this.config.fontFamilyMappings)) {
       window.setFontDir(this.config.fontDir);
       window.setFontFamilyMappings(this.config.fontFamilyMappings);
       window.preloadFonts();
@@ -99,7 +105,7 @@ var chordySvg = function () {
 
     // SVG drawing starts here
     // const svgChord = SVG(element).size(svgConfig.width, svgConfig.height);
-    if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
       // ran in NodeJS
       this.svgChord = SVG(document.documentElement).size(this.svgConfig.width, this.svgConfig.height);
     } else {
@@ -107,15 +113,15 @@ var chordySvg = function () {
       this.svgChord = SVG(this.config.target).size(this.svgConfig.width, this.svgConfig.height);
     }
     this.svgChord.clear();
-    this.svgChord.defs().element('style').words(styleData);
+    this.svgChord.defs().element("style").words(styleData);
 
     // embed notes
     var def = this.svgChord.defs().attr("id", "tonal");
-    def.element('notes').attr("id", "tonal-notes").words(this.chord.notes.join(':'));
-    def.element('semitones').attr("id", "tonal-semitones").words(this.chord.semitones.join(':'));
+    def.element("notes").attr("id", "tonal-notes").words(this.chord.notes.join(":"));
+    def.element("semitones").attr("id", "tonal-semitones").words(this.chord.semitones.join(":"));
 
     // embed comment
-    def.element('comment').attr("id", "chord-comment").words(this.chord.comment);
+    def.element("comment").attr("id", "chord-comment").words(this.chord.comment);
 
     // master group of everything
     var groupMaster = this.svgChord.group();
@@ -150,12 +156,12 @@ var chordySvg = function () {
   }
 
   _createClass(chordySvg, [{
-    key: 'svg',
+    key: "svg",
     value: function svg() {
       return this.svgData;
     }
   }, {
-    key: 'notes',
+    key: "notes",
     value: function notes() {
       return this.chord.notes;
     }
@@ -163,7 +169,7 @@ var chordySvg = function () {
     // check inputs are valid
 
   }, {
-    key: 'processChord',
+    key: "processChord",
     value: function processChord(input) {
       // calculate important chord properties
       var noteLowest = Tonal.Note.midi(this.config.stringLowest);
@@ -174,11 +180,11 @@ var chordySvg = function () {
         var fret = parseInt(input.shape[i], 16);
 
         if (Number.isNaN(fret)) {
-          if (input.shape[i] === 'x' || input.shape[i] === 'X') {
+          if (input.shape[i] === "x" || input.shape[i] === "X") {
             // muted position
             this.chord.containsMute = true;
             this.chord.stringsMute.push(i);
-            shape[i] = 'x';
+            shape[i] = "x";
           } else {
             // other non alphanumeric char
             throw new Error("Invalid shape: " + input.shape);
@@ -209,7 +215,7 @@ var chordySvg = function () {
     // draw the "grid" of string and frets
 
   }, {
-    key: 'drawStrings',
+    key: "drawStrings",
     value: function drawStrings(group) {
       // drawStrings
       var height = this.config.fretCount * this.config.fretLength;
@@ -233,23 +239,23 @@ var chordySvg = function () {
     // draw the 'X' and 'O' symbols, representing mutes and open strings
 
   }, {
-    key: 'drawX',
+    key: "drawX",
     value: function drawX(groupX, input) {
       for (var stringNumber = 0; stringNumber < this.config.stringCount; stringNumber++) {
         if (input.shape[stringNumber] === "X" || input.shape[stringNumber] === "x") {
           groupX.text("X").attr("id", "x-" + stringNumber).font({
-            anchor: 'middle',
+            anchor: "middle",
             size: this.config.fontSizeX
           }).fill({
-            color: '#000'
+            color: "#000"
           }).move(stringNumber * this.config.stringPitch, -this.config.fontSizeX * this.svgConfig.fontSizeMultiplier);
         }
         if (input.shape[stringNumber] === "0") {
           groupX.text("O").attr("id", "o-" + stringNumber).font({
-            anchor: 'middle',
+            anchor: "middle",
             size: this.config.fontSizeX
           }).fill({
-            color: '#000'
+            color: "#000"
           }).move(stringNumber * this.config.stringPitch, -this.config.fontSizeX * this.svgConfig.fontSizeMultiplier);
         }
       }
@@ -258,7 +264,7 @@ var chordySvg = function () {
     // draw the fretted dots
 
   }, {
-    key: 'drawDots',
+    key: "drawDots",
     value: function drawDots(groupDots) {
       var offset = {
         dot: {
@@ -276,7 +282,7 @@ var chordySvg = function () {
       // this.chord.shape is an array of numbers / 'x', 'o' (not hex-like string)
       var x = this.config.stringIntervals[this.chord.root - 1] + parseInt(this.chord.shape[this.chord.root - 1], 10);
       if (Number.isNaN(x)) {
-        throw new Error('Root position ' + this.chord.root + ' has no integer in shape \'' + this.chord.shape.join('') + '\'');
+        throw new Error("Root position " + this.chord.root + " has no integer in shape '" + this.chord.shape.join("") + "'");
       }
 
       // set semitone = 0 at the root position
@@ -343,10 +349,10 @@ var chordySvg = function () {
             //   .hide();
 
             // write the interval name inside the dot
-            var textInterval = groupDot.text(intervalName).addClass('interval').attr("id", "circle-" + stringNumber + "-" + fretNumber + "-interval").fill({
-              color: '#fff'
+            var textInterval = groupDot.text(intervalName).addClass("interval").attr("id", "circle-" + stringNumber + "-" + fretNumber + "-interval").fill({
+              color: "#fff"
             }).font({
-              anchor: 'middle',
+              anchor: "middle",
               size: this.config.fontSizeDot
             }).move(_x, y).hide();
 
@@ -357,15 +363,15 @@ var chordySvg = function () {
               // this part is never run if the root is a open string
 
               // set colour
-              groupDot.select('circle').addClass("dot-root").fill({
+              groupDot.select("circle").addClass("dot-root").fill({
                 color: this.config.colorRootBackground
               });
 
               // draw fret number - draw only once at root position if root is not open string
               groupDots.text(actualFretNumber + " fr").attr("id", "fret-number").fill({
-                color: '#f00'
+                color: "#f00"
               }).font({
-                anchor: 'left',
+                anchor: "left",
                 size: this.config.fontSizeFretNumber
               }).move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, y);
             }
@@ -395,9 +401,9 @@ var chordySvg = function () {
 
         // add fret number text
         groupDots.text(fretNumberStart + " fr").attr("id", "fret-number").fill({
-          color: '#f00'
+          color: "#f00"
         }).font({
-          anchor: 'left',
+          anchor: "left",
           size: this.config.fontSizeFretNumber
         }).move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, 1); // 1 = 1st fret position in diagram
       }
@@ -406,17 +412,17 @@ var chordySvg = function () {
     // draw title above diagram
 
   }, {
-    key: 'drawTitle',
+    key: "drawTitle",
     value: function drawTitle(groupTitle) {
       groupTitle.text(this.chord.name).attr("id", "title").font({
-        anchor: 'left',
+        anchor: "left",
         size: this.config.fontSizeTitle
       }).fill({
-        color: '#000'
+        color: "#000"
       }).move(0, -(this.config.fontSizeX + this.config.fontSizeTitle) * this.svgConfig.fontSizeMultiplier);
     }
   }, {
-    key: 'isEmpty',
+    key: "isEmpty",
     value: function isEmpty(obj) {
       for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
@@ -430,7 +436,7 @@ var chordySvg = function () {
   return chordySvg;
 }();
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
   module.exports = chordySvg;
 } else {
   window.ChordySvg = chordySvg;
