@@ -125,6 +125,13 @@ This will also generate some SVG files which you should check. Remove these file
 
     rm -f *.svg
 
+To publish npm package
+
+    npm run build
+    npm version (patch|minor|major)
+    npm publish
+    git push
+
 ### Browser
 
 Build browser targeted files `dist/svg-chordy.js` and `dist/svg-chordy.min.js` with:

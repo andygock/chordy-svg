@@ -318,6 +318,12 @@ var chordySvg = function () {
             // matching chord shape position, add a visible dot
             // debug({ semitoneStart, semitones, intervalNameFull, intervalName });
 
+            // determine inverted interval names if needed
+            if (intervalName.match(/^-/)) {
+              // invert name and remove '-' char
+              intervalName = Tonal.Interval.invert(intervalName).replace('-', '');
+            }
+
             // draw dots and text
             // const groupDot = groupMaster.group();
             var groupDot = groupDots.group();

@@ -311,7 +311,7 @@ class chordySvg {
         // fretNumber = 0 is actually the "1st fret shown", a relative fret in the diagram
         const actualFretNumber = fretNumber + fretNumberStart;
         const intervalNameFull = Tonal.Interval.fromSemitones(semitones);
-        const intervalName = Tonal.Interval.fromSemitones(semitones % 12); // simplified interval, wraps back to 1P at octave
+        let intervalName = Tonal.Interval.fromSemitones(semitones % 12); // simplified interval, wraps back to 1P at octave
         const noteNames = Tonal.Note.names(" b");
         const noteName = noteNames[(semitones + 144) % 12]; // fix this, + 144 isn't the best technique
         semitones++;
@@ -322,6 +322,12 @@ class chordySvg {
           // previously fretNumber + 1 when not using offset
           // matching chord shape position, add a visible dot
           // debug({ semitoneStart, semitones, intervalNameFull, intervalName });
+
+          // determine inverted interval names if needed
+          if (intervalName.match(/^-/)) {
+            // invert name and remove '-' char
+            intervalName = Tonal.Interval.invert(intervalName).replace('-', '');
+          }
 
           // draw dots and text
           // const groupDot = groupMaster.group();
