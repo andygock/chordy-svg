@@ -136,7 +136,7 @@ To publish npm package
 
 Build browser targeted files `dist/svg-chordy.js` and `dist/svg-chordy.min.js` with:
 
-    npm build
+    npm run build
 
 View file `test/test.html`
 
