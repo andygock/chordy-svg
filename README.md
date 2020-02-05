@@ -75,8 +75,7 @@ Create SVG and write to new file `output.svg`
 ```html
     <div id="image"></div>
 
-    <!-- use https://rawgit.com/danigb/tonal/master/dist/tonal.min.js for latest build -->
-    <script src="https://cdn.rawgit.com/danigb/tonal/a105f292/dist/tonal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/danigb/tonal@a105f292f423505e1731fb1c415b87f4a7ea889e/dist/tonal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
     <script src="chordy-svg.min.js"></script>
     <script type="text/javascript">
