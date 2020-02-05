@@ -21,15 +21,15 @@
   "author": "Andy Gock <andy@agock.com> (https://agock.com)",
   "license": "MIT",
   "dependencies": {
-    "debug": "^2.6.9",
-    "svg.js": "^2.6.4",
-    "svgdom": "0.0.15",
-    "tonal": "^1.1.3",
-    "xmldom": "^0.1.27"
+    "debug": "^4.1.1",
+    "svg.js": "^2.7.1",
+    "svgdom": "0.0.21",
+    "tonal": "^2.2.2",
+    "xmldom": "^0.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-minify": "^0.2.0",
+    "babel-minify": "^0.5.1",
     "babel-preset-env": "^1.7.0"
   }
 }
