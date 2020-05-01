@@ -33,7 +33,7 @@ class chordySvg {
       stringWidth: 1,
       dotDiameter: 25,
       fontSizeDot: 11,
-      fontSizeX: 22,
+      fontSizeX: 16,
       fontSizeFretNumber: 16,
       fontSizeTitle: 22,
       stringIntervals: [0, 5, 10, 15, 19, 24],
