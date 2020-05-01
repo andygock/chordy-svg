@@ -2,7 +2,7 @@
   "name": "chordy-svg",
   "version": "1.1.0",
   "description": "Guitar Chord SVG Diagram Generator",
-  "main": "index.js",
+  "main": "dist/chordy-svg.min.js",
   "repository": "github:andygock/chordy-svg",
   "scripts": {
     "test": "mocha",
@@ -25,11 +25,14 @@
     "svg.js": "^2.7.1",
     "svgdom": "0.0.21",
     "tonal": "^2.2.2",
-    "xmldom": "^0.2.1"
+    "xmldom": "^0.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-minify": "^0.5.1",
     "babel-preset-env": "^1.7.0"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
