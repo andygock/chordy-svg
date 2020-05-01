@@ -1,28 +1,34 @@
 /* eslint prefer-arrow-callback:0, func-names:0, no-console:0 */
 
-const ChordySvg = require("../index");
+const ChordySvg = require("../dist/chordy-svg.js");
 const fs = require("fs");
+const path = require("path");
 
-describe("Write SVGs to files (user to review and check files afterwards)", function() {
+const outputDir = path.resolve(__dirname, "output");
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir);
+}
+
+describe("Write SVGs to files (user to review and check files afterwards)", function () {
   const chords = [
     {
       name: "Fm_C",
       shape: "x3656x",
       root: 5,
-      comment: ""
+      comment: "",
     },
   ];
 
   for (let i = 0; i < chords.length; i++) {
     const chord = chords[i];
     const filename = `${chord.name}-${chord.root}-${chord.shape}.svg`;
-    it(`write to file: ${filename}`, function(done) {
+    it(`write to file: ${filename}`, function (done) {
       // write to file
       saveToFile(chord, filename, done);
     });
   }
 
-  after(function() {
+  after(function () {
     // console.log("You'll need to clean up the *.svg files after checking them.");
   });
 });
@@ -33,7 +39,7 @@ function saveToFile(voicing, filename, done) {
   if (!data.startsWith("<svg xmlns=")) {
     throw new Error("Invalid SVG data");
   }
-  fs.writeFile(filename, data, function(err) {
+  fs.writeFile(path.resolve(outputDir, filename), data, function (err) {
     if (err) {
       throw new Error(err);
     }
