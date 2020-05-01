@@ -2,13 +2,13 @@
   "name": "chordy-svg",
   "version": "1.1.1",
   "description": "Guitar Chord SVG Diagram Generator",
-  "main": "dist/chordy-svg.min.js",
+  "main": "dist/chordy-svg.js",
   "repository": "github:andygock/chordy-svg",
   "scripts": {
-    "test": "mocha",
-    "build": "npm run babel && npm run minify",
-    "babel": "./node_modules/.bin/babel ./index.js --out-file dist/chordy-svg.js",
-    "minify": "./node_modules/.bin/minify ./dist/chordy-svg.js --out-file dist/chordy-svg.min.js"
+    "test": "mocha test/general test/inversion",
+    "build": "babel ./index.js -s -o dist/chordy-svg.js -o test/chordy-svg.js",
+    "start": "babel ./index.js -w -s -o dist/chordy-svg.js",
+    "serve": "http-server ./test -c-1 -o"
   },
   "keywords": [
     "guitar",
@@ -28,9 +28,10 @@
     "xmldom": "^0.3.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-minify": "^0.5.1",
-    "babel-preset-env": "^1.7.0"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "http-server": "^0.12.3"
   },
   "files": [
     "dist"
