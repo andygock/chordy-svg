@@ -5,10 +5,11 @@
   "main": "dist/chordy-svg.js",
   "repository": "github:andygock/chordy-svg",
   "scripts": {
-    "test": "mocha test/general test/inversion && http-server ./test/output -i -o",
-    "build": "babel ./index.js -s -o dist/chordy-svg.js",
     "start": "babel ./index.js -w -s -o test/dist/chordy-svg.js",
-    "serve": "browser-sync start --server ./test --files ./test",
+    "serve:start": "browser-sync start --server ./test --files ./test",
+    "mocha": "mocha test/general test/inversion",
+    "serve:mocha": "browser-sync start --server ./test/output --directory --files ./test/output --no-open",
+    "build": "babel ./index.js -s -o dist/chordy-svg.js",
     "clean": "rimraf ./test/output ./test/dist ./dist"
   },
   "keywords": [

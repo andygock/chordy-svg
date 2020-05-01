@@ -33,7 +33,7 @@ With npm
 
     npm install chordy-svg --save
 
-## Developing
+## Development and Testing
 
 For development and building from source, clone Git repo
 
@@ -46,15 +46,21 @@ Run babel script which watches input file and writes to `test/dist/chordy-svg.js
 
 You can view live updated output of browser with browser-sync
 
-    npm run serve
+    npm run serve:start
 
-To build to `dist/chordy-svg.js`
+You can run further tests with Mocha for plain Node usage (this uses `dist/chordy-svg.js`).
+
+    npm run mocha
+
+You can view live updated directory listing of mocha test output with.
+
+    npm run serve:mocha
+
+The `serve:*` scripts are usually done concurrently with the `start` or `mocha` scripts.
+
+Once all is tested well, build to `dist/chordy-svg.js`, ready for publishing to npm.
 
     npm run build
-
-You can run further tests with:
-
-- `npm run test` to run Mocha test suite (this uses `dist/chordy-svg.js`)
 
 Run `npm run clean` to delete all built files and generated SVG images from `test/dist/`, `test/output/` and `dist/`
 
@@ -87,7 +93,7 @@ Create SVG and write to new file `output.svg`
 
 ### Browser Example
 
-`chordy-svg.min.js` is found in `dist/` and can be built with `npm build`. Read the tests section further below with prewritten examples you can use.
+`chordy-svg.min.js` is found in `dist/` and can be built with `npm build`.
 
 ```html
     <div id="image"></div>
@@ -125,36 +131,6 @@ The properties for this object are:
 - `root` is the root string. `0` refers to the lowest frequency / thickest string. On 6 string guitars with EADGBE tuning, `5` refers to the high E string. In the generated diagram, the dot for this position will be coloured red by default.
 
 A second parameter to the `ChordySvg()` constructor may be used to set more custom parameters (documentation not complete yet).
-
-## Testing
-
-### NodeJS
-
-Standalone testing (requires [Mocha](https://mochajs.org/), you may need to run `npm install mocha -g` first)
-
-    git clone https://github.com/andygock/chordy-svg
-    cd chordy-svg
-    npm update
-    npm test
-
-This will also generate some SVG files which you should check. Remove these files once you've finished with them.
-
-    rm -f *.svg
-
-To publish npm package
-
-    npm run build
-    npm version (patch|minor|major)
-    npm publish
-    git push
-
-### Browser
-
-Build browser targeted files `dist/svg-chordy.js` and `dist/svg-chordy.min.js` with:
-
-    npm run build
-
-View file `test/test.html`
 
 ## Notes
 
