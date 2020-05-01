@@ -93,14 +93,14 @@ Create SVG and write to new file `output.svg`
 
 ### Browser Example
 
-`chordy-svg.min.js` is found in `dist/` and can be built with `npm build`.
+`chordy-svg.js` is found in `dist/` and can be built with `npm build`.
 
 ```html
     <div id="image"></div>
 
-    <script src="https://cdn.jsdelivr.net/gh/danigb/tonal@a105f292f423505e1731fb1c415b87f4a7ea889e/dist/tonal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
-    <script src="chordy-svg.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
+    <script src="chordy-svg.js"></script>
     <script type="text/javascript">
         // create new svg diagram
         var element = document.getElementById('image');
