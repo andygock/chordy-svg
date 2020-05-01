@@ -33,6 +33,8 @@ With npm
 
     npm install chordy-svg --save
 
+## Developing
+
 For development and building from source
 
     git clone https://github.com/andygock/chordy-svg
@@ -43,6 +45,8 @@ This should run Babel and create `dist/chordy-svg.js`. You can run further tests
 
 - `npm run test` to run Mocha test suite
 - `npm run serve` to test browser SVG generation
+
+Run `npm run clean` to delete all built files and generated SVG images from `test` and `build` scripts
 
 ## Examples
 
