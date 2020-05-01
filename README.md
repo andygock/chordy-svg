@@ -33,37 +33,6 @@ With npm
 
     npm install chordy-svg --save
 
-## Development and Testing
-
-For development and building from source, clone Git repo
-
-    git clone https://github.com/andygock/chordy-svg
-    cd chordy-svg
-
-Run babel script which watches input file and writes to `test/dist/chordy-svg.js`
-
-    npm run start
-
-You can view live updated output of browser with browser-sync
-
-    npm run serve:start
-
-You can run further tests with Mocha for plain Node usage (this uses `dist/chordy-svg.js`).
-
-    npm run mocha
-
-You can view live updated directory listing of mocha test output with.
-
-    npm run serve:mocha
-
-The `serve:*` scripts are usually done concurrently with the `start` or `mocha` scripts.
-
-Once all is tested well, build to `dist/chordy-svg.js`, ready for publishing to npm.
-
-    npm run build
-
-Run `npm run clean` to delete all built files and generated SVG images from `test/dist/`, `test/output/` and `dist/`
-
 ## Examples
 
 ### Node Example
@@ -131,6 +100,37 @@ The properties for this object are:
 - `root` is the root string. `0` refers to the lowest frequency / thickest string. On 6 string guitars with EADGBE tuning, `5` refers to the high E string. In the generated diagram, the dot for this position will be coloured red by default.
 
 A second parameter to the `ChordySvg()` constructor may be used to set more custom parameters (documentation not complete yet).
+
+## Development and Testing
+
+For development and building from source, clone Git repo
+
+    git clone https://github.com/andygock/chordy-svg
+    cd chordy-svg
+
+Run babel script which watches input file and writes to `test/dist/chordy-svg.js`
+
+    npm run start
+
+You can view live updated output of browser with browser-sync
+
+    npm run serve:start
+
+You can run further tests with Mocha for plain Node usage (this uses `dist/chordy-svg.js`).
+
+    npm run mocha
+
+You can view live updated directory listing of mocha test output with.
+
+    npm run serve:mocha
+
+The `serve:*` scripts are usually done concurrently with the `start` or `mocha` scripts.
+
+Once all is tested well, build to `dist/chordy-svg.js`, ready for publishing to npm.
+
+    npm run build
+
+Run `npm run clean` to delete all built files and generated SVG images from `test/dist/`, `test/output/` and `dist/`
 
 ## Notes
 
