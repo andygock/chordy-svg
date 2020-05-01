@@ -7,7 +7,7 @@
   "scripts": {
     "test": "mocha test/general test/inversion",
     "build": "babel ./index.js -s -o dist/chordy-svg.js -o test/chordy-svg.js",
-    "start": "babel ./index.js -w -s -o dist/chordy-svg.js",
+    "start": "babel ./index.js -w -s -o dist/chordy-svg.js -o test/chordy-svg.js",
     "serve": "http-server ./test -c-1 -o"
   },
   "keywords": [

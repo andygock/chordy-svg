@@ -41,12 +41,12 @@ class chordySvg {
       display: "interval",
       offset: {
         x: 50,
-        y: 50
+        y: 50,
       },
       colorRootBackground: "#c00",
       fontDir: "",
       fontFamilyMappings: {},
-      target: {}
+      target: {},
     };
 
     Object.assign(this.config, options);
@@ -69,7 +69,7 @@ class chordySvg {
 
       // overall width and height of SVG
       height: this.config.fretCount * this.config.fretLength + this.config.fontSizeX + this.config.fontSizeTitle + 20, // the last figure is experimentally determined
-      width: this.config.stringCount * (this.config.stringPitch - 1) + 50 // the last figure is experimentally determined
+      width: this.config.stringCount * (this.config.stringPitch - 1) + 50, // the last figure is experimentally determined
     };
 
     this.chord = {
@@ -84,7 +84,7 @@ class chordySvg {
       root: input.root,
       string: [], // array of { semitone, intervalName, noteName }
       semitones: [],
-      notes: []
+      notes: [],
     };
     // debug('chord', this.chord);
 
@@ -103,27 +103,15 @@ class chordySvg {
       this.svgChord = SVG(this.config.target).size(this.svgConfig.width, this.svgConfig.height);
     }
     this.svgChord.clear();
-    this.svgChord
-      .defs()
-      .element("style")
-      .words(styleData);
+    this.svgChord.defs().element("style").words(styleData);
 
     // embed notes
     const def = this.svgChord.defs().attr("id", "tonal");
-    def
-      .element("notes")
-      .attr("id", "tonal-notes")
-      .words(this.chord.notes.join(":"));
-    def
-      .element("semitones")
-      .attr("id", "tonal-semitones")
-      .words(this.chord.semitones.join(":"));
+    def.element("notes").attr("id", "tonal-notes").words(this.chord.notes.join(":"));
+    def.element("semitones").attr("id", "tonal-semitones").words(this.chord.semitones.join(":"));
 
     // embed comment
-    def
-      .element("comment")
-      .attr("id", "chord-comment")
-      .words(this.chord.comment);
+    def.element("comment").attr("id", "chord-comment").words(this.chord.comment);
 
     // master group of everything
     const groupMaster = this.svgChord.group();
@@ -216,7 +204,7 @@ class chordySvg {
       group
         .line(0, 0, 0, height)
         .stroke({
-          width: 1
+          width: 1,
         })
         .attr("id", "string-" + stringNumber)
         .move(stringNumber * this.config.stringPitch, 0);
@@ -228,7 +216,7 @@ class chordySvg {
       group
         .line(0, 0, width, 0)
         .stroke({
-          width: 1
+          width: 1,
         })
         .attr("id", "fret-" + fretNumber)
         .move(0, fretNumber * this.config.fretLength);
@@ -246,10 +234,10 @@ class chordySvg {
           .attr("id", "x-" + stringNumber)
           .font({
             anchor: "middle",
-            size: this.config.fontSizeX
+            size: this.config.fontSizeX,
           })
           .fill({
-            color: "#000"
+            color: "#000",
           })
           .move(stringNumber * this.config.stringPitch, -this.config.fontSizeX * this.svgConfig.fontSizeMultiplier);
       }
@@ -259,10 +247,10 @@ class chordySvg {
           .attr("id", "o-" + stringNumber)
           .font({
             anchor: "middle",
-            size: this.config.fontSizeX
+            size: this.config.fontSizeX,
           })
           .fill({
-            color: "#000"
+            color: "#000",
           })
           .move(stringNumber * this.config.stringPitch, -this.config.fontSizeX * this.svgConfig.fontSizeMultiplier);
       }
@@ -274,12 +262,12 @@ class chordySvg {
     const offset = {
       dot: {
         x: -this.config.dotDiameter / 2,
-        y: -(this.config.dotDiameter / 2) + this.config.fretLength / 2
+        y: -(this.config.dotDiameter / 2) + this.config.fretLength / 2,
       },
       text: {
         x: 0,
-        y: -this.config.fontSizeDot / 2 * this.svgConfig.fontSizeMultiplier
-      }
+        y: (-this.config.fontSizeDot / 2) * this.svgConfig.fontSizeMultiplier,
+      },
     };
     // debug(this.chord);
 
@@ -326,7 +314,7 @@ class chordySvg {
           // determine inverted interval names if needed
           if (intervalName.match(/^-/)) {
             // invert name and remove '-' char
-            intervalName = Tonal.Interval.invert(intervalName).replace('-', '');
+            intervalName = Tonal.Interval.invert(intervalName).replace("-", "");
           }
 
           // draw dots and text
@@ -368,11 +356,11 @@ class chordySvg {
             .addClass("interval")
             .attr("id", "circle-" + stringNumber + "-" + fretNumber + "-interval")
             .fill({
-              color: "#fff"
+              color: "#fff",
             })
             .font({
               anchor: "middle",
-              size: this.config.fontSizeDot
+              size: this.config.fontSizeDot,
             })
             .move(x, y)
             .hide();
@@ -384,23 +372,20 @@ class chordySvg {
             // this part is never run if the root is a open string
 
             // set colour
-            groupDot
-              .select("circle")
-              .addClass("dot-root")
-              .fill({
-                color: this.config.colorRootBackground
-              });
+            groupDot.select("circle").addClass("dot-root").fill({
+              color: this.config.colorRootBackground,
+            });
 
             // draw fret number - draw only once at root position if root is not open string
             groupDots
               .text(actualFretNumber + " fr")
               .attr("id", "fret-number")
               .fill({
-                color: "#f00"
+                color: "#f00",
               })
               .font({
                 anchor: "left",
-                size: this.config.fontSizeFretNumber
+                size: this.config.fontSizeFretNumber,
               })
               .move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, y);
           }
@@ -433,11 +418,11 @@ class chordySvg {
         .text(fretNumberStart + " fr")
         .attr("id", "fret-number")
         .fill({
-          color: "#f00"
+          color: "#f00",
         })
         .font({
           anchor: "left",
-          size: this.config.fontSizeFretNumber
+          size: this.config.fontSizeFretNumber,
         })
         .move((this.config.stringCount - 1) * this.config.stringPitch + this.config.dotDiameter * 0.6, 1); // 1 = 1st fret position in diagram
     }
@@ -450,10 +435,10 @@ class chordySvg {
       .attr("id", "title")
       .font({
         anchor: "left",
-        size: this.config.fontSizeTitle
+        size: this.config.fontSizeTitle,
       })
       .fill({
-        color: "#000"
+        color: "#000",
       })
       .move(0, -(this.config.fontSizeX + this.config.fontSizeTitle) * this.svgConfig.fontSizeMultiplier);
   }
