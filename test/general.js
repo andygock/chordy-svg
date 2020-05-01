@@ -1,6 +1,6 @@
 /* eslint prefer-arrow-callback:0, func-names:0, no-console:0 */
 
-const ChordySvg = require("../index");
+const ChordySvg = require("../dist/chordy-svg.js");
 const fs = require("fs");
 const DOMParser = require("xmldom").DOMParser;
 const path = require("path");

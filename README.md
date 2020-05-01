@@ -35,18 +35,28 @@ With npm
 
 ## Developing
 
-For development and building from source
+For development and building from source, clone Git repo
 
     git clone https://github.com/andygock/chordy-svg
     cd chordy-svg
+
+Run babel script which watches input file and writes to `test/dist/chordy-svg.js`
+
+    npm run start
+
+You can view live updated output of browser with browser-sync
+
+    npm run serve
+
+To build to `dist/chordy-svg.js`
+
     npm run build
 
-This should run Babel and create `dist/chordy-svg.js`. You can run further tests
+You can run further tests with:
 
-- `npm run test` to run Mocha test suite
-- `npm run serve` to test browser SVG generation
+- `npm run test` to run Mocha test suite (this uses `dist/chordy-svg.js`)
 
-Run `npm run clean` to delete all built files and generated SVG images from `test` and `build` scripts
+Run `npm run clean` to delete all built files and generated SVG images from `test/dist/`, `test/output/` and `dist/`
 
 ## Examples
 

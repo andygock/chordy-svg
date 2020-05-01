@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>chordy-svg test</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <style>
+      body {
+        padding: 1rem;
+      }
+    </style>
   </head>
   <body>
     <div id="image"></div>
@@ -13,7 +18,7 @@
     <!-- use https://rawgit.com/danigb/tonal/master/dist/tonal.min.js for latest build -->
     <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
-    <script src="chordy-svg.js"></script>
+    <script src="dist/chordy-svg.js"></script>
     <script type="text/javascript">
       // create new svg diagram
       var element = document.getElementById("image");
@@ -21,6 +26,16 @@
         { name: "Cmaj7", shape: "x35453", root: 2, comment: "Test comment" },
         { target: element }
       );
+    </script>
+    <script id="__bs_script__">
+      //<![CDATA[
+      document.write(
+        "<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace(
+          "HOST",
+          location.hostname
+        )
+      );
+      //]]>
     </script>
   </body>
 </html>

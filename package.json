@@ -5,11 +5,11 @@
   "main": "dist/chordy-svg.js",
   "repository": "github:andygock/chordy-svg",
   "scripts": {
-    "test": "mocha test/general test/inversion",
-    "build": "babel ./index.js -s -o dist/chordy-svg.js -o test/chordy-svg.js",
-    "start": "babel ./index.js -w -s -o dist/chordy-svg.js -o test/chordy-svg.js",
-    "serve": "http-server ./test -c-1 -o",
-    "clean": "rimraf ./test/output ./dist ./test/chordy-svg.js ./test/chordy-svg.js.map"
+    "test": "mocha test/general test/inversion && http-server ./test/output -i -o",
+    "build": "babel ./index.js -s -o dist/chordy-svg.js",
+    "start": "babel ./index.js -w -s -o test/dist/chordy-svg.js",
+    "serve": "browser-sync start --server ./test --files ./test",
+    "clean": "rimraf ./test/output ./test/dist ./dist"
   },
   "keywords": [
     "guitar",
@@ -32,7 +32,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "http-server": "^0.12.3",
+    "browser-sync": "^2.26.7",
     "rimraf": "^3.0.2"
   },
   "files": [

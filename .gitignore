@@ -1,8 +1,5 @@
-/*.tgz
 node_modules
 fonts
-/*.svg
-/test/chordy-svg.js
-/test/chordy-svg.js.map
 /test/output
+/test/dist
 /dist
