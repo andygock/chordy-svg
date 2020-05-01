@@ -29,17 +29,9 @@ You can see this library being used at <https://chords.gock.net/>
 
 ## Installation
 
-### Via NPM
-
-Install module:
+With npm
 
     npm install chordy-svg --save
-
-### Via Git
-
-Clone Git repository
-
-    git clone https://github.com/andygock/chordy-svg
 
 ## Examples
 
