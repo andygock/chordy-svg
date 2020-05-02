@@ -67,9 +67,9 @@ Create SVG and write to new file `output.svg`
 ```html
 <div id="image"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
-<script src="chordy-svg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal@3.7.2/browser/tonal.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/svg.js@2.7.1/dist/svg.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chordy-svg@latest/dist/chordy-svg.min.js"></script>
 <script type="text/javascript">
   // create new svg diagram
   var element = document.getElementById("image");
