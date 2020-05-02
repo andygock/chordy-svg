@@ -3,3 +3,4 @@ fonts
 /test/output
 /test/dist
 /dist
+/yarn.lock
