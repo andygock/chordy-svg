@@ -10,7 +10,8 @@
     "mocha": "mocha test/general test/inversion",
     "serve:mocha": "browser-sync start --server ./test/output --directory --files ./test/output --no-open",
     "build": "babel ./index.js -s -o dist/chordy-svg.js",
-    "clean": "rimraf ./test/output ./test/dist ./dist"
+    "clean": "rimraf ./test/output ./test/dist ./dist",
+    "pretty": "prettier --write --list-different ."
   },
   "keywords": [
     "guitar",
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.9.6",
     "browser-sync": "^2.26.7",
     "mocha": "^7.1.2",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2"
   },
   "files": [

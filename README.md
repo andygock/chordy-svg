@@ -40,13 +40,13 @@ With npm
 Create a node application `test.js`. This will create a SVG diagram and write the contents to stdout.
 
 ```js
-const ChordySvg = require('chordy-svg');
+const ChordySvg = require("chordy-svg");
 
 const voicing = {
-    name: "Cmaj7",
-    shape: "x35453",
-    root: 2,
-    comment: ""
+  name: "Cmaj7",
+  shape: "x35453",
+  root: 2,
+  comment: "",
 };
 
 const svg = new ChordySvg(voicing);
@@ -65,16 +65,16 @@ Create SVG and write to new file `output.svg`
 `chordy-svg.js` is found in `dist/` and can be built with `npm build`.
 
 ```html
-    <div id="image"></div>
+<div id="image"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
-    <script src="chordy-svg.js"></script>
-    <script type="text/javascript">
-        // create new svg diagram
-        var element = document.getElementById('image');
-        var svg = new ChordySvg({ name: "Cmaj7", shape: "x35453", root: 2, comment: "Test comment" }, { target: element });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
+<script src="chordy-svg.js"></script>
+<script type="text/javascript">
+  // create new svg diagram
+  var element = document.getElementById("image");
+  var svg = new ChordySvg({ name: "Cmaj7", shape: "x35453", root: 2, comment: "Test comment" }, { target: element });
+</script>
 ```
 
 ## Input
@@ -83,10 +83,10 @@ In the example above, we used:
 
 ```js
 const voicing = {
-    name: "Cmaj7",
-    shape: "x35453",
-    root: 2,
-    comment: ""
+  name: "Cmaj7",
+  shape: "x35453",
+  root: 2,
+  comment: "",
 };
 ```
 
