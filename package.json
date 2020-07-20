@@ -1,6 +1,6 @@
 {
   "name": "chordy-svg",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Guitar Chord SVG Diagram Generator",
   "main": "dist/chordy-svg.js",
   "repository": "github:andygock/chordy-svg",
