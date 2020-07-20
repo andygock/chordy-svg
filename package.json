@@ -21,7 +21,7 @@
     "generator",
     "music"
   ],
-  "author": "Andy Gock <andy@agock.com> (https://agock.com)",
+  "author": "Andy Gock <andy@gock.net> (https://gock.net)",
   "license": "MIT",
   "dependencies": {
     "debug": "^4.1.1",
