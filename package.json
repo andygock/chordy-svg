@@ -24,19 +24,19 @@
   "author": "Andy Gock <andy@gock.net> (https://gock.net)",
   "license": "MIT",
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "^4.3.1",
     "svg.js": "^2.7.1",
     "svgdom": "0.0.21",
     "tonal": "^2.2.2",
     "xmldom": "^0.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "browser-sync": "^2.26.10",
-    "mocha": "^8.0.1",
-    "prettier": "^2.0.5",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "browser-sync": "^2.26.14",
+    "mocha": "^8.4.0",
+    "prettier": "^2.3.1",
     "rimraf": "^3.0.2"
   },
   "files": [
