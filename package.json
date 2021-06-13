@@ -28,7 +28,7 @@
     "svg.js": "^2.7.1",
     "svgdom": "0.0.21",
     "tonal": "^2.2.2",
-    "xmldom": "^0.3.0"
+    "xmldom": "^0.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
