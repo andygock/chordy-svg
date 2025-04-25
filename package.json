@@ -40,6 +40,8 @@
     "rimraf": "^3.0.2"
   },
   "files": [
-    "dist"
-  ]
+    "dist",
+    "types"
+  ],
+  "types": "./types/chordySvg.d.ts"
 }
